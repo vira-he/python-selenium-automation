@@ -52,3 +52,35 @@ driver.find_element(By.XPATH, "//a[text()='Conditions of Use']")
 # *Privacy Notice link
 
 driver.find_element(By.XPATH, "//a[text()='Privacy Notice']")
+
+# HW 3. Find the most optimal locators for Create Account (Registration) page elements:
+
+# 1. Amazon logo
+driver.find_element(By.CSS_SELECTOR, 'a.a-link-nav-icon')
+
+# 2. Create Account header
+driver.find_element(By.CSS_SELECTOR, 'h1.a-spacing-small')
+
+# 3. Your name field
+driver.find_element(By.ID, 'ap_customer_name')
+
+# 4. Email field
+driver.find_element(By.ID, 'ap_email')
+
+# 5. Password field
+driver.find_element(By.ID, 'ap_password')
+
+# 6. Re-enter password
+driver.find_element(By.ID, 'ap_password_check')
+
+# 7. Continue button
+driver.find_element(By.ID, 'continue')
+
+# 8. Conditions of use
+driver.find_element(By.XPATH, "//a[contains(@href, 'ap_register_notification_condition_of_use')]")
+
+# 9. Privacy notice
+driver.find_element(By.XPATH, "//a[contains(@href, 'ap_register_notification_privacy_notice')]")
+
+# 10. Sign in link
+driver.find_element(By.XPATH, "//a[contains(@href, 'ap/signin')]")
