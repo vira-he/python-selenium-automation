@@ -1,6 +1,8 @@
 # Created by vera at 5/6/23
-Feature: # Enter feature name here
-  # Enter feature description here
+Feature: Amazon search tests
 
-  Scenario: # Enter scenario name here
-    # Enter steps here
+  Scenario: User can search on Amazon
+    Given Open amazon main page
+    When Search for table
+    Then Verify search results
+
