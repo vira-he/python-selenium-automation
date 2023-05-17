@@ -6,3 +6,4 @@ Feature: Amazon search tests
     When Search for table
     Then Verify search results
 
+
