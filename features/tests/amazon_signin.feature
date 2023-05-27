@@ -6,3 +6,9 @@ Feature: Amazon Sign in page
     When Click Orders
     Then Verify Sign in page opened
 
+
+
+  Scenario: Signin page can be opened from Signin popup
+    Given Open amazon main page
+    When Click on button from Signin popup
+    Then Verify Sign in page opened
