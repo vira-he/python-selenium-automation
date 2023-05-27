@@ -1,6 +1,7 @@
 from selenium.webdriver.common.by import By
 from behave import given, when, then
 from time import sleep
+from selenium.webdriver.support import expected_conditions as EC
 
 
 SEARCH_FIELD = By.ID, "twotabsearchtextbox"
@@ -9,6 +10,7 @@ ORDERS_BTN = By.ID, "nav-orders"
 CART_BTN = By.ID, "nav-cart"
 BS_BTN = By.XPATH, "//a[contains(@href, 'nav_cs_bestsellers')]"
 FOOTER_LINKS = By.CSS_SELECTOR, ".navFooterMoreOnAmazon a"
+POPUP_SIGNIN_BTN = By.ID, "#nav-signin-tooltip"
 
 
 @given("Open amazon main page")
@@ -40,3 +42,8 @@ def click_best_sellers(context):
 def verify_link_number(context):
     links_count = len(context.driver.find_elements(*FOOTER_LINKS))
     assert links_count == 36, f'Expected 36 links, but got {links_count}'
+
+
+@when("Click on button from Signin popup")
+def click_signin_popup_btn(context):
+    context.driver.wait.until(EC.element_to_be_clickable(POPUP_SIGNIN_BTN), message='Signin not clickable').signin_btn.click()
