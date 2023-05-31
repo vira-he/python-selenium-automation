@@ -1,0 +1,18 @@
+body {
+    background-image: url("https://previews.123rf.com/images/sferaphotogroup/sferaphotogroup1811/sferaphotogroup181100009/113516974-roman-cuisine-sign-of-italian-restaurant-in-rome-italy.jpg");
+    font-family: Helvetica;
+}
+
+h2.darkred {
+    color: darkred;
+}
+
+#instr_recipe {
+    color: #0e5699;
+}
+
+.header {
+    color: #4a4a48;
+    text-align: center;
+}
+
