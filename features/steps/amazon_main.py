@@ -46,9 +46,30 @@ def click_signin_popup_btn(context):
     ).click()
 
 
+@when("Verify sign in is clickable")
+def verify_sign_in_clickable(context):
+    context.driver.wait.until(
+        EC.element_to_be_clickable(POPUP_SIGNIN_BTN),
+        message='Signin not clickable'
+    )
+
+
+@when("Wait for {sec} sec")
+def wait_sec(context, sec):
+    sleep(int(sec))
+
+
 @then("Verify there are 36 links")
 def verify_link_number(context):
     links_count = len(context.driver.find_elements(*FOOTER_LINKS))
     assert links_count == 36, f'Expected 36 links, but got {links_count}'
+
+
+@then("Verify sign in disappears")
+def verify_sign_in_popup_disappears(context):
+    context.driver.wait.until(
+        EC.invisibility_of_element_located(POPUP_SIGNIN_BTN),
+        message="Signin btn did not disappear"
+    )
 
 

@@ -7,9 +7,9 @@ from selenium.webdriver.support import expected_conditions as EC
 COLOR_OPTIONS = By.CSS_SELECTOR, ".imgSwatch"
 
 
-@given("Open amazon product B07BJKRR25 page")
-def open_amazon_product(context):
-    context.driver.get('https://www.amazon.com/gp/product/B07BJL37GD')
+@given("Open amazon product {product} page")
+def open_amazon_product(context, product):
+    context.driver.get('https://www.amazon.com/gp/product/' + product)
 
 
 @then("Verify user can click through colors")
