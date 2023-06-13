@@ -23,21 +23,23 @@ def open_amazon(context):
 def search_amazon(context, search_word):
     # context.driver.find_element(*SEARCH_FIELD).send_keys(search_word)
     # context.driver.find_element(*SUBMIT_BTN).click()
-    context.app.header.search_for_product(search_word)
+    context.app.header.search_amazon(search_word)
 
 
 @when("Click Orders")
 def click_orders(context):
-    context.driver.find_element(*ORDERS_BTN).click()
+    context.app.header.click_orders()
+    # context.driver.find_element(*ORDERS_BTN).click()
+
 
 @when("Open cart")
 def open_cart(context):
-    context.driver.find_element(*CART_BTN).click()
+    context.app.header.open_cart()
 
 
 @when("Click Best Sellers")
 def click_best_sellers(context):
-    context.driver.find_element(*BS_BTN).click()
+    context.app.header.click_best_sellers()
 
 
 @when("Click on button from Signin popup")
@@ -46,7 +48,8 @@ def click_signin_popup_btn(context):
     #     EC.element_to_be_clickable(POPUP_SIGNIN_BTN),
     #     message='Signin not clickable'
     # ).click()
-    context.app.main_page.click_signin_popup()
+    context.app.header.click_signin_popup()
+
 
 @when("Verify sign in is clickable")
 def verify_sign_in_clickable(context):

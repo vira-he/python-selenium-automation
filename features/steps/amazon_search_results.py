@@ -8,12 +8,12 @@ OPEN_SEARCH_RESULT = By.XPATH, "//div[@data-asin = 'B08Y85SYG4']"
 ADD_TO_CART_BTN = By.ID, "add-to-cart-button"
 
 
-@then("Verify search results")
-def verify_search_results(context):
+@then("Verify search results for {expected_result}")
+def verify_search_results(context, expected_result):
     # expected_result = '"table"'
     # actual_result = context.driver.find_element(*SEARCH_RESULT_TEXT).text
     # assert expected_result == actual_result, f'Error! Expected {expected_result} but got actual {actual_result}'
-    context.app.search_results.verify_search_results()
+    context.app.search_results.verify_search_results(expected_result)
 
 
 @when("Add product to cart")

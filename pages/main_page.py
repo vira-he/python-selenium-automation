@@ -7,10 +7,6 @@ from selenium.webdriver.support import expected_conditions as EC
 
 
 class MainPage(Page):
-    POPUP_SIGNIN_BTN = By.CSS_SELECTOR, "#nav-signin-tooltip .nav-action-signin-button"
 
     def open_main_page(self):
         self.open_url("https://www.amazon.com/")
-
-    def click_signin_popup(self):
-        self.click(*self.POPUP_SIGNIN_BTN)
