@@ -15,13 +15,15 @@ POPUP_SIGNIN_BTN = By.CSS_SELECTOR, "#nav-signin-tooltip .nav-action-signin-butt
 
 @given("Open amazon main page")
 def open_amazon(context):
-    context.driver.get('https://www.amazon.com/')
+    # context.driver.get('https://www.amazon.com/')
+    context.app.main_page.open_main_page()
 
 
 @when("Search for {search_word}")
 def search_amazon(context, search_word):
-    context.driver.find_element(*SEARCH_FIELD).send_keys(search_word)
-    context.driver.find_element(*SUBMIT_BTN).click()
+    # context.driver.find_element(*SEARCH_FIELD).send_keys(search_word)
+    # context.driver.find_element(*SUBMIT_BTN).click()
+    context.app.header.search_for_product(search_word)
 
 
 @when("Click Orders")
@@ -40,11 +42,11 @@ def click_best_sellers(context):
 
 @when("Click on button from Signin popup")
 def click_signin_popup_btn(context):
-    context.driver.wait.until(
-        EC.element_to_be_clickable(POPUP_SIGNIN_BTN),
-        message='Signin not clickable'
-    ).click()
-
+    # context.driver.wait.until(
+    #     EC.element_to_be_clickable(POPUP_SIGNIN_BTN),
+    #     message='Signin not clickable'
+    # ).click()
+    context.app.main_page.click_signin_popup()
 
 @when("Verify sign in is clickable")
 def verify_sign_in_clickable(context):

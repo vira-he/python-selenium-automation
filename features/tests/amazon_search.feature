@@ -5,5 +5,3 @@ Feature: Amazon search tests
     Given Open amazon main page
     When Search for table
     Then Verify search results
-
-

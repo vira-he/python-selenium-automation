@@ -10,9 +10,10 @@ ADD_TO_CART_BTN = By.ID, "add-to-cart-button"
 
 @then("Verify search results")
 def verify_search_results(context):
-    expected_result = '"table"'
-    actual_result = context.driver.find_element(*SEARCH_RESULT_TEXT).text
-    assert expected_result == actual_result, f'Error! Expected {expected_result} but got actual {actual_result}'
+    # expected_result = '"table"'
+    # actual_result = context.driver.find_element(*SEARCH_RESULT_TEXT).text
+    # assert expected_result == actual_result, f'Error! Expected {expected_result} but got actual {actual_result}'
+    context.app.search_results.verify_search_results()
 
 
 @when("Add product to cart")
@@ -21,4 +22,4 @@ def add_to_cart(context):
     sleep(5)
     context.driver.find_element(*ADD_TO_CART_BTN).click()
     sleep(5)
-    #cart opens automatically after product added
+    # cart opens automatically after product added
