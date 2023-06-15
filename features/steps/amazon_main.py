@@ -64,6 +64,16 @@ def wait_sec(context, sec):
     sleep(int(sec))
 
 
+@when("Hover over language options")
+def hover_lang(context):
+    context.app.header.hover_lang()
+
+
+@when("Select department Health & Personal Care")
+def select_dept(context):
+    context.app.header.select_dept()
+
+
 @then("Verify there are 36 links")
 def verify_link_number(context):
     links_count = len(context.driver.find_elements(*FOOTER_LINKS))
@@ -78,3 +88,6 @@ def verify_sign_in_popup_disappears(context):
     )
 
 
+@then("Verify Spanish option present")
+def verify_spanish_present(context):
+    context.app.header.verify_spanish_present()

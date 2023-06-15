@@ -23,3 +23,8 @@ def add_to_cart(context):
     context.driver.find_element(*ADD_TO_CART_BTN).click()
     sleep(5)
     # cart opens automatically after product added
+
+
+@then("Verify correct department shown")
+def verify_dept(context):
+    context.app.search_results.verify_dept()

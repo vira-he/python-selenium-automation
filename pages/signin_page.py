@@ -11,3 +11,4 @@ class SignInPage(Page):
         self.driver.wait.until(EC.url_contains('https://www.amazon.com/ap/signin'))
         self.verify_element_text("Sign in", *self.SIGNIN_HEADER)
         self.find_element(*self.EMAIL)
+

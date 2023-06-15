@@ -1,9 +1,7 @@
 from pages.base_page import Page
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.action_chains import ActionChains
-from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import Select
 
 
 class Header(Page):
@@ -13,8 +11,9 @@ class Header(Page):
     CART_BTN = By.ID, "nav-cart"
     BS_BTN = By.XPATH, "//a[contains(@href, 'nav_cs_bestsellers')]"
     POPUP_SIGNIN_BTN = By.CSS_SELECTOR, "#nav-signin-tooltip .nav-action-signin-button"
-    # LANG_OPTIONS =
-    # SPANISH_LANG =
+    LANG_OPTIONS = By.ID, "icp-nav-flyout"
+    SPANISH_LANG = By.CSS_SELECTOR, "a[href='#switch-lang=es_US']"
+    DEPT_SELECT = By.ID, "searchDropdownBox"
 
     def search_amazon(self, search_word):
         self.input_text(search_word, *self.SEARCH_FIELD)
@@ -41,3 +40,8 @@ class Header(Page):
 
     def open_cart(self):
         self.click(*self.CART_BTN)
+
+    def select_dept(self):
+        dept_select = self.find_element(*self.DEPT_SELECT)
+        select = Select(dept_select)
+        select.select_by_value("search-alias=hpc")

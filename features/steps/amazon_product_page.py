@@ -7,9 +7,18 @@ from selenium.webdriver.support import expected_conditions as EC
 COLOR_OPTIONS = By.CSS_SELECTOR, ".imgSwatch"
 
 
-@given("Open amazon product {product} page")
+@given('Open amazon product {product} page')
 def open_amazon_product(context, product):
-    context.driver.get('https://www.amazon.com/gp/product/' + product)
+    context.app.product_page.open_amazon_product(product)
+
+@when("Hover over New Arrivals")
+def hover_new_arrivals(context):
+    context.app.product_page.hover_new_arrivals()
+
+
+@then("Verify user can see the deals")
+def verify_can_see_deals(context):
+    context.app.product_page.verify_can_see_deals()
 
 
 @then("Verify user can click through colors")
