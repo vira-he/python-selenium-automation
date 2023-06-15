@@ -74,3 +74,55 @@
 #
 # unique_char_string('aabcde')
 # unique_char_string('abcde')
+
+#
+# Below The Arithmetical Mean
+# When given a list, the program should return a list of all the elements below the original list’s arithmetical mean.
+# The arithmetical mean is the sum of all elements divided by the number of elements.
+# Example: [1, 3, 5, 6, 4, 10, 2, 3] (The arithmetical mean is 4.25), Return [1, 3, 4, 2, 3]
+
+def below_arithmetical_mean(a):
+    sum = 0
+    n = 0
+    below_mean = []
+    for i in a:
+        sum += i
+        n += 1
+    avg = sum/n
+
+    for i in a:
+        if i < avg:
+            below_mean.append(i)
+
+    print (f'Avarage = {avg}')
+    print (f'values below average: {below_mean}')
+
+example_1 = [1, 3, 5, 6, 4, 10, 2, 3]
+below_arithmetical_mean(example_1)
+
+# Two Lowest Elements
+# When given a list of elements, find the two lowest elements.
+# They can be equal to each other or different.
+# Example: [198, 3, 4, 9, 10, 9, 2], Return: 2, 3
+# [3, 40, 198, 9, 10, 9, 2]
+def two_lowest_elements(l):
+    lowest1 = l[0] #3
+    lowest2 = l[1] #40
+
+    for i in l:
+        if i < lowest1:
+            lowest2 = lowest1
+            lowest1 = i
+        elif i < lowest2\
+                and i != lowest1:
+            lowest2 = i
+
+    print (lowest1, lowest2)
+
+
+list = [3, 40, 198, 9, 10, 9, 20]
+
+two_lowest_elements(list)
+
+
+
