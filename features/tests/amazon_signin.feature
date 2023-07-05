@@ -7,6 +7,7 @@ Feature: Amazon Sign in page
     Then Verify Sign in page opened
 
 
+  @smoke
   Scenario: Signin page can be opened from Signin popup
     Given Open amazon main page
     When Click on button from Signin popup
