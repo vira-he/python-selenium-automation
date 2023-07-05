@@ -129,41 +129,116 @@
 # Write a program that takes as input a list of digits encoding a nonnegative decimal integer D
 # and updates the list to represent the integer D + 1.
 # For example, if the input is [1, 2, 9] then you should update the array to [1, 3, 0].
+#
+# def plus_one(digits):
+#     for i in range(len(digits)):
+#         digits[i] += 1
+#         if digits[i] == 10:
+#             digits[i] = 0
+#         if digits[i] > 10:
+#             break
+#     print(digits)
+#
+#
+# list_1 = [1, 2, 9]
+# list_2 = [3, 7, 2, 9, 9]
+#
+#
+# plus_one(list_1)
+# plus_one(list_2)
+#
+#
+# # Your input is a list of integers, and you have to reorder its entries so that the even entries appear first.
+# # You are required to solve it without allocating additional storage (operate with the input list).
+# # Example: [7, 3, 5, 6, 4, 10, 3, 2] Return [6, 4, 10, 2, 7, 3, 5, 3]
+# #           0  1  2  3  4  5   6  7
+# def even_first(digits):
+#     for i in range(len(digits)):
+#         if digits[i] % 2 != 0:
+#             digits.remove(digits[i])
+#             digits.append(digits[i])
+#         else:
+#             continue
+#     print(digits)
+#
+#
+# list_3 = [7, 3, 5, 6, 4, 10, 3, 2]
+#
+#
+# even_first(list_3)
+#
 
-def plus_one(digits):
-    for i in range(len(digits)):
-        digits[i] += 1
-        if digits[i] == 10:
-            digits[i] = 0
-        if digits[i] > 10:
-            break
-    print(digits)
+sort_list = [1, 31, 5, 16, 47, 10, 2, 32]
 
 
-list_1 = [1, 2, 9]
-list_2 = [3, 7, 2, 9, 9]
+def selection_sort(lst):
+    for i in range(len(lst)):
+        min_idx = i
+        for j in range(i + 1, len(lst)):
+            if lst[j] < lst[min_idx]:
+                min_idx = j
+        lst[i], lst[min_idx] = lst[min_idx], lst[i]
+    print(f"Selection - {lst}")
 
 
-plus_one(list_1)
-plus_one(list_2)
+selection_sort(sort_list)
 
 
-# Your input is a list of integers, and you have to reorder its entries so that the even entries appear first.
-# You are required to solve it without allocating additional storage (operate with the input list).
-# Example: [7, 3, 5, 6, 4, 10, 3, 2] Return [6, 4, 10, 2, 7, 3, 5, 3]
-#           0  1  2  3  4  5   6  7
-def even_first(digits):
-    for i in range(len(digits)):
-        if digits[i] % 2 != 0:
-            digits.remove(digits[i])
-            digits.append(digits[i])
-        else:
+def bubble_sort(lst):
+    for i in range (len(lst)):
+        for j in range(len(lst)-i - 1):
+            if lst[j] > lst[j+1]:
+                lst[j], lst[j+1] = lst[j+1], lst[j]
+    print(f"Bubble - {lst}")
+
+
+bubble_sort(sort_list)
+
+
+def insertion_sort(lst):
+    for i in range(1, len(lst)):
+        key = lst[i]
+        j = i-1
+
+        while j >= 0 and key < lst[j]:
+            lst[j+1] = lst[j]
+            j -= 1
+        lst[j+1] = key
+
+    print(f"Insertion - {lst}")
+
+
+insertion_sort(sort_list)
+
+
+def merge_sort(lst):
+    if len(lst) <= 1:
+        return lst
+    middle = len(lst) // 2
+    return merge_lst(merge_sort(lst[:middle]), merge_sort(lst[middle:]))
+
+
+def merge_lst(left_lst, right_lst):
+    merged_lst = []
+    i = j = 0
+    while i < len(left_lst) or j < len(right_lst):
+        if i == len(left_lst):
+            merged_lst.append(right_lst[j])
+            j += 1
             continue
-    print(digits)
+        if j == len(right_lst):
+            merged_lst.append(left_lst[i])
+            i += 1
+            continue
+
+        if left_lst[i] <= right_lst[j]:
+            merged_lst.append(left_lst[i])
+            i +=1
+        else:
+            merged_lst.append(right_lst[j])
+            j += 1
+    print(f"Merged - {merged_lst}")
 
 
-list_3 = [7, 3, 5, 6, 4, 10, 3, 2]
-
-
-even_first(list_3)
-
+merge_sort(sort_list)
+print(merge_sort(sort_list))
